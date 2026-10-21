@@ -1,0 +1,258 @@
+warning: in the working copy of '.gitignore', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/build.gradle.kts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/src/androidTest/java/com/example/partware/ExampleInstrumentedTest.kt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/src/main/AndroidManifest.xml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/src/main/java/com/example/partware/MainActivity.kt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/src/main/java/com/example/partware/data/model/Part.kt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/src/main/java/com/example/partware/data/repository/PartsRepository.kt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/src/main/java/com/example/partware/ui/parts/PartsScreen.kt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/src/main/java/com/example/partware/ui/parts/PartsViewModel.kt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/src/main/java/com/example/partware/ui/theme/Color.kt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/src/main/java/com/example/partware/ui/theme/Theme.kt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/src/main/java/com/example/partware/ui/theme/Type.kt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/src/main/keepRules/rules.keep', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/src/main/res/drawable/ic_launcher_background.xml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/src/main/res/drawable/ic_launcher_foreground.xml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/src/main/res/values/colors.xml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/src/main/res/values/strings.xml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/src/main/res/values/themes.xml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/src/main/res/xml/backup_rules.xml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/src/main/res/xml/data_extraction_rules.xml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/src/test/java/com/example/partware/ExampleUnitTest.kt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/src/test/java/com/example/partware/ui/parts/PartsViewModelTest.kt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'build.gradle.kts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'gradle.properties', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'gradle/gradle-daemon-jvm.properties', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'gradle/libs.versions.toml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'gradle/wrapper/gradle-wrapper.properties', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'gradlew', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'gradlew.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'settings.gradle.kts', LF will be replaced by CRLF the next time Git touches it
+[1mdiff --git a/.idea/deploymentTargetSelector.xml b/.idea/deploymentTargetSelector.xml[m
+[1mindex 298c4fb..ca16a99 100644[m
+[1m--- a/.idea/deploymentTargetSelector.xml[m
+[1m+++ b/.idea/deploymentTargetSelector.xml[m
+[36m@@ -6,22 +6,6 @@[m
+         <option name="selectionMode" value="DROPDOWN" />[m
+         <DialogSelection />[m
+       </SelectionState>[m
+[31m-      <SelectionState runConfigName="googleTest()">[m
+[31m-        <option name="selectionMode" value="DROPDOWN" />[m
+[31m-        <DialogSelection />[m
+[31m-      </SelectionState>[m
+[31m-      <SelectionState runConfigName="amazonTest()">[m
+[31m-        <option name="selectionMode" value="DROPDOWN" />[m
+[31m-        <DialogSelection />[m
+[31m-      </SelectionState>[m
+[31m-      <SelectionState runConfigName="userSearchInput()">[m
+[31m-        <option name="selectionMode" value="DROPDOWN" />[m
+[31m-        <DialogSelection />[m
+[31m-      </SelectionState>[m
+[31m-      <SelectionState runConfigName="ebayTest()">[m
+[31m-        <option name="selectionMode" value="DROPDOWN" />[m
+[31m-        <DialogSelection />[m
+[31m-      </SelectionState>[m
+     </selectionStates>[m
+   </component>[m
+ </project>[m
+\ No newline at end of file[m
+[1mdiff --git a/.idea/misc.xml b/.idea/misc.xml[m
+[1mindex 29a5cc0..d49650a 100644[m
+[1m--- a/.idea/misc.xml[m
+[1m+++ b/.idea/misc.xml[m
+[36m@@ -1,9 +1,7 @@[m
+ <?xml version="1.0" encoding="UTF-8"?>[m
+ <project version="4">[m
+   <component name="ExternalStorageConfigurationManager" enabled="true" />[m
+[31m-  <component name="ProjectRootManager" version="2" languageLevel="JDK_25" default="true" project-jdk-name="jbr-25" project-jdk-type="JavaSDK">[m
+[31m-    <output url="file://$PROJECT_DIR$/build/classes" />[m
+[31m-  </component>[m
+[32m+[m[32m  <component name="ProjectRootManager" version="2" languageLevel="JDK_25" default="true" project-jdk-name="jbr-25" project-jdk-type="JavaSDK" />[m
+   <component name="ProjectType">[m
+     <option name="id" value="Android" />[m
+   </component>[m
+[1mdiff --git a/app/build.gradle.kts b/app/build.gradle.kts[m
+[1mindex be84ffa..1cc9f4c 100644[m
+[1m--- a/app/build.gradle.kts[m
+[1m+++ b/app/build.gradle.kts[m
+[36m@@ -1,6 +1,7 @@[m
+ plugins {[m
+     alias(libs.plugins.android.application)[m
+     alias(libs.plugins.kotlin.compose)[m
+[32m+[m[32m    alias(libs.plugins.ksp)[m
+ }[m
+ [m
+ android {[m
+[36m@@ -36,6 +37,9 @@[m [mandroid {[m
+ }[m
+ [m
+ dependencies {[m
+[32m+[m[32m    implementation(libs.androidx.room.runtime)[m
+[32m+[m[32m    implementation(libs.androidx.room.ktx)[m
+[32m+[m[32m    ksp(libs.androidx.room.compiler)[m
+     implementation(platform("com.squareup.okhttp3:okhttp-bom:5.5.0"))[m
+     implementation("com.squareup.okhttp3:okhttp")[m
+     implementation("com.squareup.okhttp3:logging-interceptor")[m
+[1mdiff --git a/app/src/main/java/com/example/partware/data/model/Part.kt b/app/src/main/java/com/example/partware/data/model/Part.kt[m
+[1mindex bff9b6a..1e8c45d 100644[m
+[1m--- a/app/src/main/java/com/example/partware/data/model/Part.kt[m
+[1m+++ b/app/src/main/java/com/example/partware/data/model/Part.kt[m
+[36m@@ -15,7 +15,7 @@[m [mdata class Part([m
+     val brand: String,[m
+     val model: String,[m
+     val category: PartCategory,[m
+[31m-    val priceCents: Long,[m
+[32m+[m[32m    val priceCents: Long?,[m
+     val stock: Int,[m
+     val specifications: List<PartSpecification> = emptyList()[m
+ )[m
+[1mdiff --git a/app/src/main/java/com/example/partware/data/repository/PartsRepository.kt b/app/src/main/java/com/example/partware/data/repository/PartsRepository.kt[m
+[1mindex b7f99fc..2b238de 100644[m
+[1m--- a/app/src/main/java/com/example/partware/data/repository/PartsRepository.kt[m
+[1m+++ b/app/src/main/java/com/example/partware/data/repository/PartsRepository.kt[m
+[36m@@ -8,6 +8,8 @@[m [mimport com.example.partware.data.model.PartSpecification[m
+ interface PartsRepository {[m
+     /** Returns the catalog from the current data source. */[m
+     fun getParts(): List<Part>[m
+[32m+[m[32m    /** Async override for Room. In-memory tests retain synchronous behavior. */[m
+[32m+[m[32m    suspend fun loadParts(): List<Part> = getParts()[m
+ }[m
+ [m
+ /** Illustrative products, prices and specifications for UI development; not a real catalog. */[m
+[1mdiff --git a/app/src/main/java/com/example/partware/ui/parts/PartsScreen.kt b/app/src/main/java/com/example/partware/ui/parts/PartsScreen.kt[m
+[1mindex 431b919..41350e1 100644[m
+[1m--- a/app/src/main/java/com/example/partware/ui/parts/PartsScreen.kt[m
+[1m+++ b/app/src/main/java/com/example/partware/ui/parts/PartsScreen.kt[m
+[36m@@ -108,7 +108,7 @@[m [mprivate fun CategoryPartsScreen([m
+     onQueryChange: (String) -> Unit[m
+ ) {[m
+     Text(category.title, style = MaterialTheme.typography.headlineMedium)[m
+[31m-    Text("Demo inventory · illustrative products and prices", style = MaterialTheme.typography.bodySmall)[m
+[32m+[m[32m    Text("Hardware specifications from the local catalog · prices are historical or unavailable", style = MaterialTheme.typography.bodySmall)[m
+     // Searches only this category, including spec values such as Ryzen, AM5 and DDR5.[m
+     OutlinedTextField([m
+         value = state.query,[m
+[36m@@ -148,7 +148,7 @@[m [mprivate fun PartDetailsScreen(part: Part) {[m
+     ) {[m
+         item {[m
+             Text(part.model, style = MaterialTheme.typography.headlineMedium)[m
+[31m-            Text("Demo item · specifications and price are illustrative")[m
+[32m+[m[32m            Text("Imported hardware specifications · prices may be historical")[m
+         }[m
+         item {[m
+             Card(Modifier.fillMaxWidth()) {[m
+[36m@@ -175,14 +175,14 @@[m [mprivate fun PartDetailsScreen(part: Part) {[m
+ @Composable[m
+ private fun StockLabel(stock: Int) {[m
+     Text([m
+[31m-        text = if (stock == 0) "Out of stock" else "In stock: $stock",[m
+[32m+[m[32m        text = if (stock < 0) "Availability unknown" else if (stock == 0) "Out of stock" else "In stock: $stock",[m
+         color = if (stock == 0) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurface[m
+     )[m
+ }[m
+ [m
+ /** Formats integer cents consistently as USD for this starter catalog. */[m
+[31m-private fun formatPrice(cents: Long): String =[m
+[31m-    NumberFormat.getCurrencyInstance(Locale.US).format(java.math.BigDecimal.valueOf(cents, 2))[m
+[32m+[m[32mprivate fun formatPrice(cents: Long?): String =[m
+[32m+[m[32m    cents?.let { NumberFormat.getCurrencyInstance(Locale.US).format(java.math.BigDecimal.valueOf(it, 2)) } ?: "Price unavailable"[m
+ [m
+ /** Allows the category grid to be inspected in Android Studio without running the app. */[m
+ @Preview(showBackground = true)[m
+[1mdiff --git a/app/src/main/java/com/example/partware/ui/parts/PartsViewModel.kt b/app/src/main/java/com/example/partware/ui/parts/PartsViewModel.kt[m
+[1mindex 7678c88..b27f5dd 100644[m
+[1m--- a/app/src/main/java/com/example/partware/ui/parts/PartsViewModel.kt[m
+[1m+++ b/app/src/main/java/com/example/partware/ui/parts/PartsViewModel.kt[m
+[36m@@ -1,11 +1,15 @@[m
+ package com.example.partware.ui.parts[m
+ [m
+ import androidx.lifecycle.ViewModel[m
+[32m+[m[32mimport androidx.lifecycle.viewModelScope[m
+[32m+[m[32mimport androidx.lifecycle.ViewModelProvider[m
+[32m+[m[32mimport com.example.partware.data.database.PartWareDatabase[m
+[32m+[m[32mimport com.example.partware.data.repository.RoomPartsRepository[m
+[32m+[m[32mimport kotlinx.coroutines.launch[m
+ import androidx.lifecycle.viewmodel.initializer[m
+ import androidx.lifecycle.viewmodel.viewModelFactory[m
+ import com.example.partware.data.model.Part[m
+ import com.example.partware.data.model.PartCategory[m
+[31m-import com.example.partware.data.repository.InMemoryPartsRepository[m
+ import com.example.partware.data.repository.PartsRepository[m
+ import kotlinx.coroutines.flow.MutableStateFlow[m
+ import kotlinx.coroutines.flow.asStateFlow[m
+[36m@@ -20,11 +24,23 @@[m [mdata class PartsUiState([m
+ [m
+ /** Owns navigation and search state, surviving Activity recreation such as rotation. */[m
+ class PartsViewModel(repository: PartsRepository) : ViewModel() {[m
+[31m-    private val allParts = repository.getParts()[m
+[32m+[m[32m    private var allParts = repository.getParts()[m
+     private val _uiState = MutableStateFlow(PartsUiState())[m
+     // The screen observes state and sends events back through the functions below.[m
+     val uiState = _uiState.asStateFlow()[m
+ [m
+[32m+[m[32m    init {[m
+[32m+[m[32m        // Only the Room repository requires asynchronous loading. In-memory unit tests stay synchronous.[m
+[32m+[m[32m        if (repository is RoomPartsRepository) viewModelScope.launch {[m
+[32m+[m[32m            val loaded = repository.loadParts()[m
+[32m+[m[32m            allParts = loaded[m
+[32m+[m[32m            val current = _uiState.value[m
+[32m+[m[32m            current.selectedCategory?.let { category ->[m
+[32m+[m[32m                _uiState.value = current.copy(parts = filterParts(category, current.query))[m
+[32m+[m[32m            }[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m
+     /** Opens a category with its inventory and an empty search field. */[m
+     fun openCategory(category: PartCategory) {[m
+         _uiState.value = PartsUiState(selectedCategory = category, parts = filterParts(category, ""))[m
+[36m@@ -64,7 +80,11 @@[m [mclass PartsViewModel(repository: PartsRepository) : ViewModel() {[m
+     companion object {[m
+         /** Supplies sample inventory to the lifecycle-managed ViewModel. */[m
+         val Factory = viewModelFactory {[m
+[31m-            initializer { PartsViewModel(InMemoryPartsRepository()) }[m
+[32m+[m[32m            initializer {[m
+[32m+[m[32m                val app = this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY][m
+[32m+[m[32m                    ?: error("Application required for Room")[m
+[32m+[m[32m                PartsViewModel(RoomPartsRepository(PartWareDatabase.get(app).catalogPartDao()))[m
+[32m+[m[32m            }[m
+         }[m
+     }[m
+ }[m
+[1mdiff --git a/gradle.properties b/gradle.properties[m
+[1mindex 99fc155..efcaaf9 100644[m
+[1m--- a/gradle.properties[m
+[1m+++ b/gradle.properties[m
+[36m@@ -16,4 +16,5 @@[m [morg.gradle.jvmargs=-Xmx2048m -Dfile.encoding=UTF-8[m
+ # has changed. Additionally, Gradle applies performance optimizations to task execution.[m
+ org.gradle.configuration-cache=true[m
+ # Kotlin code style for this project: "official" or "obsolete":[m
+[31m-kotlin.code.style=official[m
+\ No newline at end of file[m
+[32m+[m[32mkotlin.code.style=official[m
+[32m+[m[32mandroid.disallowKotlinSourceSets=false[m
+\ No newline at end of file[m
+[1mdiff --git a/gradle/libs.versions.toml b/gradle/libs.versions.toml[m
+[1mindex 066d775..23a847f 100644[m
+[1m--- a/gradle/libs.versions.toml[m
+[1m+++ b/gradle/libs.versions.toml[m
+[36m@@ -8,8 +8,13 @@[m [mlifecycleRuntimeKtx = "2.11.0"[m
+ activityCompose = "1.13.0"[m
+ kotlin = "2.2.10"[m
+ composeBom = "2026.02.01"[m
+[32m+[m[32mroom = "2.8.4"[m
+[32m+[m[32mksp = "2.2.10-2.0.2"[m
+ [m
+ [libraries][m
+[32m+[m[32mandroidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }[m
+[32m+[m[32mandroidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }[m
+[32m+[m[32mandroidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }[m
+ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }[m
+ junit = { group = "junit", name = "junit", version.ref = "junit" }[m
+ androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }[m
+[36m@@ -28,6 +33,7 @@[m [mandroidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-te[m
+ androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }[m
+ [m
+ [plugins][m
+[32m+[m[32mksp = { id = "com.google.devtools.ksp", version.re

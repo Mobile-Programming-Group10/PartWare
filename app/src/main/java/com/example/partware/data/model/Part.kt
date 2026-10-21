@@ -15,7 +15,7 @@ data class Part(
     val brand: String,
     val model: String,
     val category: PartCategory,
-    val priceCents: Long,
+    val priceCents: Long?,
     val stock: Int,
     val specifications: List<PartSpecification> = emptyList()
 )

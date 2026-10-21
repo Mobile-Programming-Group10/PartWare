@@ -108,7 +108,7 @@ private fun CategoryPartsScreen(
     onQueryChange: (String) -> Unit
 ) {
     Text(category.title, style = MaterialTheme.typography.headlineMedium)
-    Text("Demo inventory · illustrative products and prices", style = MaterialTheme.typography.bodySmall)
+    Text("Hardware specifications from the local catalog · prices are historical or unavailable", style = MaterialTheme.typography.bodySmall)
     // Searches only this category, including spec values such as Ryzen, AM5 and DDR5.
     OutlinedTextField(
         value = state.query,
@@ -148,7 +148,7 @@ private fun PartDetailsScreen(part: Part) {
     ) {
         item {
             Text(part.model, style = MaterialTheme.typography.headlineMedium)
-            Text("Demo item · specifications and price are illustrative")
+            Text("Imported hardware specifications · prices may be historical")
         }
         item {
             Card(Modifier.fillMaxWidth()) {
@@ -175,14 +175,14 @@ private fun PartDetailsScreen(part: Part) {
 @Composable
 private fun StockLabel(stock: Int) {
     Text(
-        text = if (stock == 0) "Out of stock" else "In stock: $stock",
+        text = if (stock < 0) "Availability unknown" else if (stock == 0) "Out of stock" else "In stock: $stock",
         color = if (stock == 0) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurface
     )
 }
 
 /** Formats integer cents consistently as USD for this starter catalog. */
-private fun formatPrice(cents: Long): String =
-    NumberFormat.getCurrencyInstance(Locale.US).format(java.math.BigDecimal.valueOf(cents, 2))
+private fun formatPrice(cents: Long?): String =
+    cents?.let { NumberFormat.getCurrencyInstance(Locale.US).format(java.math.BigDecimal.valueOf(it, 2)) } ?: "Price unavailable"
 
 /** Allows the category grid to be inspected in Android Studio without running the app. */
 @Preview(showBackground = true)

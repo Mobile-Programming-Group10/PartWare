@@ -8,6 +8,8 @@ import com.example.partware.data.model.PartSpecification
 interface PartsRepository {
     /** Returns the catalog from the current data source. */
     fun getParts(): List<Part>
+    /** Async override for Room. In-memory tests retain synchronous behavior. */
+    suspend fun loadParts(): List<Part> = getParts()
 }
 
 /** Illustrative products, prices and specifications for UI development; not a real catalog. */
