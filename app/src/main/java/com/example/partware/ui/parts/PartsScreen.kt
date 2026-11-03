@@ -1,6 +1,7 @@
 package com.example.partware.ui.parts
 
 import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -12,6 +13,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.lazy.grid.items as gridItems
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
@@ -31,6 +33,14 @@ import com.example.partware.data.model.PartCategory
 import com.example.partware.ui.theme.PartWareTheme
 import java.text.NumberFormat
 import java.util.Locale
+// filter imports
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 
 /** Connects lifecycle-aware state and user actions to the screen. */
 @Composable
@@ -39,7 +49,7 @@ fun PartsRoute(viewModel: PartsViewModel = viewModel(factory = PartsViewModel.Fa
     // Android's Back action follows the same path as the visible Back button.
     BackHandler(enabled = state.selectedCategory != null, onBack = viewModel::goBack)
     PartsScreen(state, viewModel::openCategory, viewModel::openPart,
-        viewModel::onQueryChange, viewModel::goBack)
+        viewModel::onQueryChange, viewModel::goBack, onFilterChange = viewModel::onFilterChange)
 }
 
 /** Keeps the PartWare header visible while switching between home, category and details. */
@@ -49,7 +59,8 @@ fun PartsScreen(
     onCategoryClick: (PartCategory) -> Unit,
     onPartClick: (String) -> Unit,
     onQueryChange: (String) -> Unit,
-    onBack: () -> Unit
+    onBack: () -> Unit,
+    onFilterChange: (String, String?) -> Unit = { _, _ -> }
 ) {
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
         Column(
@@ -67,7 +78,7 @@ fun PartsScreen(
             val category = state.selectedCategory
             when {
                 selectedPart != null -> PartDetailsScreen(selectedPart)
-                category != null -> CategoryPartsScreen(category, state, onPartClick, onQueryChange)
+                category != null -> CategoryPartsScreen(category, state, onPartClick, onQueryChange, onFilterChange)
                 else -> CategoryHomeScreen(onCategoryClick)
             }
         }
@@ -105,7 +116,8 @@ private fun CategoryPartsScreen(
     category: PartCategory,
     state: PartsUiState,
     onPartClick: (String) -> Unit,
-    onQueryChange: (String) -> Unit
+    onQueryChange: (String) -> Unit,
+    onFilterChange: (String, String?) -> Unit
 ) {
     Text(category.title, style = MaterialTheme.typography.headlineMedium)
     Text("Hardware specifications from the local catalog · prices are historical or unavailable", style = MaterialTheme.typography.bodySmall)
@@ -117,6 +129,12 @@ private fun CategoryPartsScreen(
         singleLine = true,
         modifier = Modifier.fillMaxWidth()
     )
+    // Display filter controls
+    PartFilters(
+        state = state,
+        onFilterChange = onFilterChange
+    )
+
     if (state.parts.isEmpty()) {
         Text("No parts match your search.")
     } else {
@@ -138,6 +156,61 @@ private fun CategoryPartsScreen(
         }
     }
 }
+
+// filter dropdown
+@Composable
+private fun PartFilters(
+    state: PartsUiState,
+    onFilterChange: (String, String?) -> Unit
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .horizontalScroll(rememberScrollState()),
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        state.filterOptions.forEach { (field, options) ->
+            // open and close state
+            var expanded by remember(state.selectedCategory, field) {
+                mutableStateOf(false)
+            }
+            Box {
+                // hide unavailable
+                TextButton(
+                    enabled = options.isNotEmpty(),
+                    onClick = { expanded = true }
+                ) {
+                    Text("$field: ${state.filters[field] ?: "All"}")
+                }
+                DropdownMenu(
+                    expanded = expanded,
+                    onDismissRequest = { expanded = false }
+                ) {
+                    //remove selected filter
+                    DropdownMenuItem(
+                        text = { Text("All") },
+                        onClick = {
+                            onFilterChange(field, null)
+                            expanded = false
+                        }
+                    )
+                    options.forEach { option ->
+                        DropdownMenuItem(
+                            text = { Text(option) },
+                            onClick = {
+                                onFilterChange(field, option)
+                                expanded = false
+                            }
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
 
 /** Detail screen: shared product fields followed by this part's specification rows. */
 @Composable

@@ -19,6 +19,10 @@ data class PartsUiState(
     val selectedCategory: PartCategory? = null,
     val selectedPart: Part? = null,
     val query: String = "",
+    // select filter vals
+    val filters: Map<String, String> = emptyMap(),
+    // dropdown choices
+    val filterOptions: Map<String, List<String>> = emptyMap(),
     val parts: List<Part> = emptyList()
 )
 
@@ -36,14 +40,17 @@ class PartsViewModel(repository: PartsRepository) : ViewModel() {
             allParts = loaded
             val current = _uiState.value
             current.selectedCategory?.let { category ->
-                _uiState.value = current.copy(parts = filterParts(category, current.query))
+                _uiState.value = current.copy(
+                    parts = filterParts(category, current.query, current.filters),
+                    filterOptions = buildFilterOptions(category)
+                )
             }
         }
     }
 
     /** Opens a category with its inventory and an empty search field. */
     fun openCategory(category: PartCategory) {
-        _uiState.value = PartsUiState(selectedCategory = category, parts = filterParts(category, ""))
+        _uiState.value = PartsUiState(selectedCategory = category, parts = filterParts(category, "", emptyMap()), filterOptions = buildFilterOptions(category))
     }
 
     /** Opens details only for an item in the displayed category list. */
@@ -61,21 +68,102 @@ class PartsViewModel(repository: PartsRepository) : ViewModel() {
 
     /** Searches brand, model and specifications inside the selected category. */
     fun onQueryChange(query: String) {
+        val current = _uiState.value
         val category = _uiState.value.selectedCategory ?: return
-        _uiState.value = _uiState.value.copy(query = query, parts = filterParts(category, query))
+
+        _uiState.value = current.copy(query = query, parts = filterParts(category, query, current.filters))
     }
 
     /** Prevents matching items from unrelated categories when searching AMD, DDR5, etc. */
-    private fun filterParts(category: PartCategory, query: String): List<Part> {
+    private fun filterParts(category: PartCategory, query: String, filters: Map<String, String>): List<Part> {
         val search = query.trim()
+
         return allParts.filter { part ->
-            part.category == category && (
-                part.brand.contains(search, ignoreCase = true) ||
-                    part.model.contains(search, ignoreCase = true) ||
-                    part.specifications.any { it.value.contains(search, ignoreCase = true) }
+            val matchesCategory = part.category == category
+
+            val matchesSearch =
+                part.brand.contains(search, ignoreCase = true) || part.model.contains(search, ignoreCase =  true) || part.specifications.any { it.value.contains(search, ignoreCase = true) }
+
+            val matchesFilters = filters.all { (field, selectedValue) ->
+                filterValue(part, field)
+                    .equals(selectedValue, ignoreCase = true)
+            }
+
+            matchesCategory && matchesSearch && matchesFilters
+        }
+    }
+
+    // Filter control defs
+    private fun filterFields(category: PartCategory): List<String> =
+        when (category) {
+            PartCategory.CPU -> listOf("Brand", "Cores")
+            PartCategory.RAM -> listOf("Size", "Memory type", "Speed")
+            PartCategory.GPU -> listOf("Brand", "VRAM")
+            PartCategory.MOTHERBOARD -> listOf("Socket")
+            else-> emptyList()
+        }
+
+    // Read stored specific w/database label
+    private fun specification(part: Part, label: String): String =
+        part.specifications
+            .firstOrNull { it.label.equals(label, ignoreCase = true) }
+            ?.value
+            ?.trim()
+            .orEmpty()
+
+
+    // filter label into product val
+    private fun filterValue(part: Part, field: String): String =
+        when(field) {
+            "Brand" -> part.brand.trim()
+            "Memory type" ->
+                specification(part, "Ram Type").substringBefore("-")
+            "Speed" -> specification(part, "Clock")
+            else -> specification(part, field)
+        }
+
+
+    // from category not just current
+    private fun buildFilterOptions(
+        category: PartCategory
+    ): Map<String, List<String>> {
+        val categoryParts = allParts.filter { it.category == category }
+
+        return filterFields(category).associateWith {field ->
+            categoryParts
+                .map { filterValue(it, field) }
+                .filter { it.isNotBlank() }
+                .distinctBy { it.lowercase() }
+                .sortedWith(
+                    compareBy<String> {
+                        it.substringBefore(" ").toIntOrNull() ?: Int.MAX_VALUE
+                    }.thenBy { it.lowercase() }
                 )
         }
     }
+
+
+    // dropdown select
+    fun onFilterChange(field: String, value: String?) {
+        val current = _uiState.value
+        val category = current.selectedCategory ?: return
+
+        val filters = current.filters.toMutableMap()
+
+        if (value == null) {
+            filters.remove(field)
+        } else {
+            filters[field] = value
+        }
+
+        _uiState.value = current.copy(
+            filters = filters,
+            parts = filterParts(category, current.query, filters)
+        )
+    }
+
+
+
 
     companion object {
         /** Supplies sample inventory to the lifecycle-managed ViewModel. */
